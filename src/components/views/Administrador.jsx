@@ -1,7 +1,14 @@
 import { Table, Button } from "react-bootstrap";
 import ItemProducto from "./producto/ItemProducto";
+import { useState, useEffect } from "react"
 
 const Administrador = () => {
+const [recetas, setRecetas] = useState([]);
+
+useEffect(()=>{
+  
+}, [])
+
     return (
         <section className="container mainSection">
         <div className="d-flex justify-content-between align-items-center mt-5">
