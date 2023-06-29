@@ -1,6 +1,31 @@
 import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { crearReceta } from "../../helpers/queries";
+
+
 
 const CrearProducto = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (recetaNueva) => {
+    console.log(recetaNueva);
+    //Pedir a la api crear receta. Si la respuesta es 201 entonces creo el receta, de lo contrario, mensaje de error
+    crearReceta(recetaNueva).then((respuesta)=>{
+      if(respuesta && respuesta.status === 201){
+        Swal.fire('receta creado', `El receta ${recetaNuevo.nombreReceta} fue creado correctamente`, 'success');
+        reset();
+      }else{
+        Swal.fire('Oops! Ocurrio un error', `El receta ${recetaNueva.nombreReceta} no fue creado correctamente, intente nuevamente mas tarde`, 'error');
+      }
+    })
+  }
   
   return (
     <section className="container mainSection">
