@@ -1,32 +1,62 @@
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Container, Card, Row, Col, Button } from "react-bootstrap";
+import { obtenerUnProducto } from "../helpers/queries";
+import { useParams } from "react-router-dom";
 
 const DetalleProducto = () => {
+
+  const [productos, setProductos] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    obtenerUnProducto(id).then((respuesta) => {
+      setProductos(respuesta);
+    });
+  }, []);
+
   return (
-    <Container className="my-3 mainSection">
-      <Card>
-        <Row>
-          <Col md={6}>
-            <Card.Img
-              variant="top"
-              src="https://images.pexels.com/photos/10273537/pexels-photo-10273537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </Col>
-          <Col md={6}>
-            <Card.Body>
-              <Card.Title>Pasta a la carbonara</Card.Title>
-              <hr />
-              <Card.Text>
-              La pasta a la carbonara es un plato clásico de la cocina italiana que se caracteriza por su sencillez y sabores ricos.
-              <br/>
-              <br/>
-              <span className="text-danger fw-semibold ">Categoria:</span> Comida Italiana
+    <Container className="my-3 mainSection" key={productos.id}>
+    <Card className="cards-disenio border-0 rounded-0 mt-5">
+      <Row>
+        <Col md={6}>
+          <Card.Img
+            className="rounded-0"
+            variant="top"
+            src={productos.imagen}
+          />
+        </Col>
+        <Col md={6}>
+          <Card.Body>
+            <Card.Title className="fw-bold display-3">
+              {productos.nombre}
+            </Card.Title>
+            <hr />
+            <Card.Text>
+              {productos.descripcion}
               <br />
-              <span className="text-danger fw-semibold ">Preparacion</span> description</Card.Text>
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
+              <hr />
+              <span className="text-danger fw-semibold">Categoria:</span>{" "}
+              {productos.categoria}
+              <br />
+              <span className="text-danger fw-semibold">Precio:</span> $
+              {productos.precio}
+              <br />
+              <span className="text-danger fw-semibold ">Talle: </span>{" "}
+              {productos.talle}
+              <br />
+              <hr />
+            </Card.Text>
+            <Button variant="primary" type="submit" className="mb-5 ">
+              Consultar
+            </Button>
+            <Button variant="success" type="submit" className="mb-5 ms-3">
+              Añadir al carrito
+            </Button>
+          </Card.Body>
+        </Col>
+      </Row>
+    </Card>
+  </Container>
   );
 };
 
