@@ -63,3 +63,33 @@ export const crearReceta = async (receta) => {
       console.log(error);
     }
   };
+
+
+  export const borrarProducto = async (id)=> {
+    try{
+        const respuesta = await fetch(URL_producto+'/'+id,{
+            method: "DELETE"
+        });
+        return respuesta;
+    }catch{
+        console.log(error)
+    }
+
+}
+
+export const editarProducto = async (producto, id)=> {
+    try{
+        const respuesta = await fetch(URL_producto+'/'+id,{
+            method: "PUT",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body : JSON.stringify(producto)
+        });
+        return respuesta;
+    }catch{
+        console.log(error)
+    }
+
+}
+
