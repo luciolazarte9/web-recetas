@@ -65,9 +65,9 @@ export const crearReceta = async (receta) => {
   };
 
 
-  export const borrarProducto = async (id)=> {
+  export const borrarReceta = async (id)=> {
     try{
-        const respuesta = await fetch(URL_producto+'/'+id,{
+        const respuesta = await fetch(URL_receta+'/'+id,{
             method: "DELETE"
         });
         return respuesta;
@@ -77,14 +77,14 @@ export const crearReceta = async (receta) => {
 
 }
 
-export const editarProducto = async (producto, id)=> {
+export const editarReceta = async (receta, id)=> {
     try{
-        const respuesta = await fetch(URL_producto+'/'+id,{
+        const respuesta = await fetch(URL_receta+'/'+id,{
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
             },
-            body : JSON.stringify(producto)
+            body : JSON.stringify(receta)
         });
         return respuesta;
     }catch{
