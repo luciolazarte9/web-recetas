@@ -13,18 +13,28 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to={'/'}>Recetas</Navbar.Brand>
+        <Navbar.Brand as={Link} to={'/'}><img
+          className="d-flex tamano-imagen"
+          src={logo}
+          alt="logo"
+        /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <NavLink end to={"/"} className={"nav-item nav-link"}>Inicio</NavLink>
-            <NavLink end to={"/registro"} className={"nav-item nav-link"}>Registro</NavLink>
+            {
+              usuarioLogueado.nombreUsuario?
+              <>
+              
+              </>:<NavLink end to={"/registro"} className={"nav-item nav-link"}>Registro</NavLink>
+
+            }
             {
               usuarioLogueado.nombreUsuario?
               <>
               <NavLink end to={"/administrador"} className={"nav-item nav-link"}>Administrador</NavLink>
-              <NavLink className={"mav-item nav-link"} onClick={logout}>Logout</NavLink>
-              </>:<NavLink end to={"/login"} className={"nav-item nav-link"}>Login</NavLink>
+              <NavLink className={"mav-item nav-link"} onClick={logout}>Salir</NavLink>
+              </>:<NavLink end to={"/login"} className={"nav-item nav-link"}>Iniciar sesion</NavLink>
             }
           </Nav>
         </Navbar.Collapse>
