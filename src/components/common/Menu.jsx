@@ -15,7 +15,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
       <Container>
         <Navbar.Brand as={Link} to={'/'}><img
           className="d-flex tamano-imagen"
-          src={logo}
+          src=""
           alt="logo"
         /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

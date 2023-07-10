@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import { obtenerUnProducto } from "../helpers/queries";
+import { obtenerUnaReceta } from "../helpers/queries";
 import { useParams } from "react-router-dom";
 
 const DetalleProducto = () => {

@@ -9,6 +9,9 @@ import Login from "./components/views/Login";
 import DetalleProducto from "./components/views/DetalleProducto";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react"
+import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdmin from "./components/routes/RutasAdmin";
+
 
 
 function App() {
